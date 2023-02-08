@@ -1,18 +1,7 @@
-const path = require("path");
+const { merge } = require("webpack-merge");
 
-module.exports = {
+const config = require("./webpack.config.js");
+
+module.exports = merge(config, {
   mode: "production",
-  entry: "./src/index.js",
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "main.js",
-  },
-  resolve: {
-    extensions: [".js", ".json"],
-  },
-  module: {
-    rules: [
-      { test: /\.(js|jsx)$/, exclude: /node_modules/, use: "babel-loader" },
-    ],
-  },
-};
+});
